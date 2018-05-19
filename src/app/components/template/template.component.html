@@ -1,0 +1,47 @@
+<h4>Formularios</h4>
+<hr>
+<form (ngSubmit)="Send(form)" #form="ngForm">
+    <div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">First Name</label>
+            <div class="col-8">
+                <input class="form-control" type="text" placeholder="First Name" name="firstName" ngModel minlength="6" value="" required #firstName="ngModel">
+                <div *ngIf="firstName.errors?.required">
+                    Field required
+                </div>
+                <div *ngIf="firstName.errors?.minlength">
+                    Min length is {{firstName.errors.minlength.requiredLength}}
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Last Name</label>
+            <div class="col-8">
+                <input type="text" class="form-control" placeholder="Last Name" name="lastName" ngModel minlength="3" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Email</label>
+            <div class="col-8">
+                <input type="text" class="form-control" placeholder="email" name="email" ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button type="submit" class="btn btn-outlet-primary">Send</button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+    </div>
+
+</form>
