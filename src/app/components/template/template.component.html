@@ -20,13 +20,26 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">Last Name</label>
             <div class="col-8">
-                <input type="text" class="form-control" placeholder="Last Name" name="lastName" ngModel minlength="3" required>
+                <input type="text" class="form-control" placeholder="Last Name" name="lastName" ngModel minlength="6" required #lastName="ngModel">
+                <div *ngIf="lastName.errors?.required">Field required</div>
+                <!-- <div>Min length is {{lastName.errors.minlength.requiredLength}} </div> -->
+                <div *ngIf="lastName.errors?.minlength">
+                    Min length is {{lastName.errors.minlength.requiredLength}}
+                </div>
+
+
             </div>
+
         </div>
         <div class="form-group row">
             <label class="col-2 col-form-label">Email</label>
             <div class="col-8">
-                <input type="text" class="form-control" placeholder="email" name="email" ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                <input type="text" class="form-control" placeholder="email" name="email" ngModel required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" #email="ngModel">
+
+                <div *ngIf="email.errors?.required">
+                    Field required
+                </div>
+                <div *ngIf="email.errors?.pattern">Bad Format</div>
             </div>
         </div>
         <div class="form-group row">
