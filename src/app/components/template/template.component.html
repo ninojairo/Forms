@@ -1,4 +1,4 @@
-<h4>Formularios</h4>
+<h4>Forms - Template Validations</h4>
 <hr>
 <form (ngSubmit)="Send(form)" #form="ngForm">
     <div>
@@ -46,7 +46,7 @@
         <div class="form-group row">
             <label class="col-2 col-form-label">Country</label>
             <div class="col-md-8">
-                <select name="Country" [(ngModel)]="usuario.country">
+                <select name="Country" class="custom-select" [(ngModel)]="usuario.country">
                     <option value="">"Select your country"</option>
                     <option *ngFor ="let c of countrys" 
                     
@@ -55,21 +55,98 @@
             </div>
         </div>
 
+
         <div class="form-group row">
-            <label class="col-2 col-form-label">&nbsp;</label>
-            <div class="input-group col-md-8">
-                <button type="submit" class="btn btn-outlet-primary">Send</button>
+            <label class="col-2 col-form-label">Profession</label>
+            <div class="col-md-8">
+                <select name="profession" class="custom-select" [(ngModel)]="usuario.profession">
+                    <option value="">Select your Profession</option>
+                    <option *ngFor ="let i of profession" 
+                        [value]="i.id">{{i.name}}</option>
+                </select>
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Sex</label>
+            <div class="col-md-8">
+                <label class="custom-control custom-radio">
+                        <input 
+                            id="radio1" 
+                            name="sex" 
+                            type="radio" 
+                            class="custom-control-input"
+                            [(ngModel)] ="usuario.sex"
+                            value="Male"
+                        >
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Male</span>
+                    </label>
+                <label class="custom-control custom-radio">
+                            <input 
+                            id="radio2" 
+                            name="sex" 
+                            type="radio" 
+                            class="custom-control-input"
+                            [(ngModel)] ="usuario.sex"
+                            value="Female"
+                        >
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">Female</span>
+                    </label>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Site</label>
+            <div class="col-md-8">
+                <label class="custom-control custom-radio" *ngFor="let i of site ">
+                            <input 
+                                id="site1" 
+                                name="site" 
+                                type="radio" 
+                                class="custom-control-input"
+                                [(ngModel)] ="usuario.site"
+                                [value]="i"
+                            >
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">{{i}}</span>
+                    </label>
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Accept</label>
+            <div class="col-md-8">
+                <label class="custom-control custom-checkbox">
+                            <input 
+                                type="checkbox" 
+                                class="custom-control-input"
+                                name ="accept"
+                                [(ngModel)]="usuario.accept"
+                                
+                            >
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">Accept terms and conditions</span>
+                    </label>
             </div>
         </div>
 
 
 
 
-
-
-
-
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button type="submit" class="btn btn-outlet-primary" [disabled]="!form.valid">Send</button>
+            </div>
+        </div>
 
     </div>
 
 </form>
+<pre>
+        {{usuario | json}}
+</pre>

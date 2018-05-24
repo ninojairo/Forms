@@ -14,7 +14,11 @@ export class TemplateComponent implements OnInit {
     fisrtName: null,
     lastName : null,
     email: null,
-    country : ""
+    country : "",
+    profession : "",
+    sex: "",
+    site: "",
+    accept: false
   }
 
   countrys =[
@@ -26,11 +30,16 @@ export class TemplateComponent implements OnInit {
       id: "COL",
       name: "Colombia"
     },
-    
+   ]
 
-  
-  
-  ]
+  profession =[
+    {id: "1",name: "Ing Industrial"},
+    {id: "2", name: "Ing Sistemas"},
+    {id: "3",name: "Administracion"},
+    {id: "4", name: "Chef"},
+]
+
+  site: string[]=["Up", "Backward", "Forward"]
   
   
   constructor() { 
