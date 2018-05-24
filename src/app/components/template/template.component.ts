@@ -10,7 +10,36 @@ import { NgForm } from '@angular/forms';
 })
 export class TemplateComponent implements OnInit {
 
-  constructor() { }
+  usuario:Object={
+    fisrtName: null,
+    lastName : null,
+    email: null,
+    country : ""
+  }
+
+  countrys =[
+    {
+      id: "CRI",
+      name: "Costa Rica"
+    },
+    {
+      id: "COL",
+      name: "Colombia"
+    },
+    
+
+  
+  
+  ]
+  
+  
+  constructor() { 
+    
+
+
+
+
+  }
 
   ngOnInit() {
   }
