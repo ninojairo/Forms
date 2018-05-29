@@ -39,8 +39,17 @@ export class DataComponent implements OnInit {
       }),
 
       'defaultEmail' : new FormControl('',     [Validators.required, Validators.pattern("[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$")]),
+      'password1': new FormControl('',Validators.required),
+      'password2': new FormControl(),
+      
 
     })
+
+    //this.userForm.controls['password2'].setValidators([Validators.required,this.PasswordsEquals])
+    this.userForm.controls['password2'].setValidators([Validators.required,this.PasswordsEquals.bind(this.userForm)])
+    
+    //this.userForm.controls['password2'].setValidators([Validators.required])
+
 
     //this.userForm.setValue(this.defaultUser);
 
@@ -49,6 +58,18 @@ export class DataComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  PasswordsEquals(control:FormControl):any{
+
+    let form: any = this;
+    if(control.value !== form.controls['password1'].value){
+      //return {noiguales:true}
+      
+    }
+    else{return null}
+
+
   }
 
   sendData(){
